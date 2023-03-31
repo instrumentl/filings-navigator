@@ -7,9 +7,7 @@ export interface ServerErrorType {
   status: number | string
 }
 
-const backend = process.env.NODE_ENV === 'production' ? 
-  'https://filings-navigator-ruby.herokuapp.com/api':
-  'https://filings-navigator-ruby.herokuapp.com/api'
+const backend = 'https://filings-navigator-ruby.herokuapp.com/api'
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
