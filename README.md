@@ -2,7 +2,7 @@
   <img src="./docs/navigator.png" />
 </div>
 <p align="center">
-  <i>Turn your data into bite-sized pieces</i>
+  <i>Turn your data into bite-sized pieces!</i>
 </p>
 
 ---
@@ -21,6 +21,12 @@
   - [4.3. Filers `GET` `/api/filers?paramKey=paramValue`](#43-filers-get-apifilersparamkeyparamvalue)
   - [4.4. Filings `GET` `/api/filings?paramKey=paramValue`](#44-filings-get-apifilingsparamkeyparamvalue)
   - [4.5. Recipients `GET` `/api/recipients?paramKey=paramValue`](#45-recipients-get-apirecipientsparamkeyparamvalue)
+- [5. Screenshots](#5-screenshots)
+  - [5.1. Advanced Search](#51-advanced-search)
+  - [5.2. Awards Index](#52-awards-index)
+  - [5.3. Filing Form](#53-filing-form)
+  - [5.4. Filer Page](#54-filer-page)
+- [6. Future Improvements](#6-future-improvements)
 
 
 # 2. Installation
@@ -110,3 +116,27 @@ Each of the frontend routes are passed through a page building model that render
 | `awarded_less_than` | false    | Filter recipients with a total award amount less than the specified value                                  |
 | `awarded_by_name`   | false    | Filter recipients based on the name of the filer who awarded them an award                                 |
 | `awarded_by_ein`    | false    | Filter recipients based on the EIN of the filer who awarded them an award (Employer Identification Number) |
+
+# 5. Screenshots
+The following set of screenshots are not comprehensive. All pages are fully interactive, functional, and powered by corresponding backend api's that execute paginated database queries.
+
+## 5.1. Advanced Search
+![advanced search](./docs/screenshots/advanced_search.png)
+
+## 5.2. Awards Index
+![awards index](./docs/screenshots/awards_index.png)
+
+## 5.3. Filing Form
+![filing form](./docs/screenshots/filing_form.png)
+
+## 5.4. Filer Page
+![filer page](./docs/screenshots/filer_page.png)
+
+# 6. Future Improvements
+- OAuth authentication (login with Google, Apple, etc...)
+- Design system improvements
+- Hosting (CI/CD with Heroku and Github Actions)
+- Security improvements for id parameters (non-sequential ids)
+- Additional searches involving similar strings (non-identical queries)
+- API and frontend testing / validation
+- Renaming and reorganizing components to be even more modular and DRY
