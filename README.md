@@ -140,3 +140,4 @@ The following set of screenshots are not comprehensive. All pages are fully inte
 - Additional searches involving similar strings (non-identical queries)
 - API and frontend testing / validation
 - Renaming and reorganizing components to be even more modular and DRY
+- Linting

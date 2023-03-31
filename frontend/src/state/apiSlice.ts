@@ -13,7 +13,7 @@ const backend = process.env.NODE_ENV === 'production' ?
 
 async function logAndOutput (response: Response) {
   const text = await response.text()
-  console.log(text)
+  console.log("RESPONSE: ", text)
   return text
 }
 
