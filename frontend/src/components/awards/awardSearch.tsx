@@ -26,7 +26,6 @@ export default function AwardSearch() {
   }
   
   const displayResults = () => {
-    console.log(stateToParams())
     return (
       <div className="m-4">
         <hr />

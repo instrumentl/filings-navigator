@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 9000",
-    "build": "next build",
-    "start": "next start -p 9000",
-    "lint": "next lint"
+    "dev": "cd frontend && next dev -p 9000",
+    "build": "cd frontend && next build",
+    "start": "cd frontend && next start -p 9000",
+    "lint": "cd frontend && next lint"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
