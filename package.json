@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cd frontend && next dev -p 9000",
     "build": "cd frontend && next build",
-    "start": "cd frontend && next start -p 9000",
+    "start": "cd frontend && next start -p $PORT",
     "lint": "cd frontend && next lint"
   },
   "dependencies": {
