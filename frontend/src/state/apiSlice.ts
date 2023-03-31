@@ -7,9 +7,7 @@ export interface ServerErrorType {
   status: number | string
 }
 
-const backend = process.env.NODE_ENV === 'production' ? 
-  `${process.env.BACKEND_URL}` :
-  'http://localhost:3000/api'
+const backend = 'http://localhost:3000/api'
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({

@@ -10,18 +10,15 @@
     "npm": "8.6.0"
   },
   "scripts": {
-    "dev": "cd frontend && next dev -p 9000",
-    "build": "cd frontend && next build",
-    "start:frontend": "cd frontend && next dev -p 9000",
-    "start:backend": "rails s",
-    "start": "concurrently \"npm run start:*\"",
-    "lint": "cd frontend && next lint"
+    "dev": "next dev -p 9000",
+    "build": "next build",
+    "start": "next start -p 9000",
+    "lint": "next lint"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
     "@types/cors": "^2.8.13",
     "axios": "^1.3.4",
-    "concurrently": "^8.0.1",
     "cors": "^2.8.5",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
