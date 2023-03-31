@@ -7,12 +7,12 @@ import { displayError } from '@/utils/errorToComponent'
 import Pagination from '../pagination'
 
 interface RecipientsIndexProps {
-  params?: string
+  params?: string | null
 }
 
-export default function RecipientsIndex({ params }: RecipientsIndexProps) {
+export default function RecipientsIndex({ params = null }: RecipientsIndexProps) {
   const [page, setPage] = useState<number>(1)
-  const apiParams = `?page=${page}${("&" + params) || ""}`
+  const apiParams = `?page=${page}${params ? ("&" + params) : ""}`
   const { data, isFetching, isSuccess, isError, error } = useGetRecipientsQuery(apiParams, {})
   const recipients = data?.recipients
 

@@ -14,7 +14,7 @@ module FilingsNavigator
 
     config.middleware.use Rack::Cors do
       allow do
-        origins 'localhost:9000'
+        origins '*'
         resource '*', headers: :any, methods: [:get, :post, :options], credentials: false
       end
     end

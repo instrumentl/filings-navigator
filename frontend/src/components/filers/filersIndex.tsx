@@ -7,12 +7,12 @@ import { displayError } from '@/utils/errorToComponent'
 import Pagination from '../pagination'
 
 interface FilersIndexProps {
-  params?: string
+  params?: string | null
 }
 
-export default function FilersIndex({ params }: FilersIndexProps) {
+export default function FilersIndex({ params = null }: FilersIndexProps) {
   const [page, setPage] = useState<number>(1)
-  const apiParams = `?page=${page}${("&" + params) || ""}`
+  const apiParams = `?page=${page}${params ? ("&" + params) : ""}`
   const { data, isFetching, isSuccess, isError, error } = useGetFilersQuery(apiParams, {})
   const filers = data?.filers
 

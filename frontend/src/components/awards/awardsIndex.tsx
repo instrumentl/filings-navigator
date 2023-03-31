@@ -8,14 +8,14 @@ import { formatMoney } from '@/utils/formatMoney'
 import Pagination from '../pagination'
 
 interface AwardsIndexProps {
-  params?: string,
+  params?: string | null,
   includeFrom: boolean,
   includeTo: boolean
 }
 
-export default function AwardsIndex({ params, includeFrom, includeTo }: AwardsIndexProps) {
+export default function AwardsIndex({ params = null, includeFrom, includeTo }: AwardsIndexProps) {
   const [page, setPage] = useState<number>(1)
-  const apiParams = `?page=${page}${("&" + params) || ""}`
+  const apiParams = `?page=${page}${params ? ("&" + params) : ""}`
   const { data, isFetching, isSuccess, isError, error } = useGetAwardsQuery(apiParams, {})
   const awards = data?.awards
 
