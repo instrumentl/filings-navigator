@@ -1,6 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
+require "rack/cors"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -10,6 +11,13 @@ module FilingsNavigator
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+
+    config.middleware.use Rack::Cors do
+      allow do
+        origins 'localhost:9000'
+        resource '*', headers: :any, methods: [:get, :post, :options], credentials: false
+      end
+    end
 
     # Configuration for the application, engines, and railties goes here.
     #

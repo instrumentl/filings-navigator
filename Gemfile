@@ -42,6 +42,10 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem 'rack-cors', :require => 'rack/cors'
+
+gem "will_paginate"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -56,6 +60,17 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # Rails schema visualization gems
+  gem 'rails-erd'
+  gem 'annotate'
+
+  # Rails debugger gems
+  gem 'better_errors'
+  gem 'binding_of_caller'
+
+  # Better rails console appearance
+  gem 'pry-rails'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
