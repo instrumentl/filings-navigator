@@ -12,7 +12,7 @@
     "build": "cd frontend && next build",
     "start": "cd frontend && next start",
     "lint": "cd frontend && next lint",
-    "postinstall": "npm run build && npm start"
+    "heroku-postbuild": "npm start"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",

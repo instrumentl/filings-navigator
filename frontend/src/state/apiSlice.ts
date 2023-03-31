@@ -8,7 +8,7 @@ export interface ServerErrorType {
 }
 
 const backend = process.env.NODE_ENV === 'production' ? 
-  process.env.BACKEND_URL :
+  `:${process.env.PORT}/api` :
   'http://localhost:3000/api'
 
 export const api = createApi({
