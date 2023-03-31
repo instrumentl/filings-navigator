@@ -10,9 +10,8 @@
   "scripts": {
     "dev": "cd frontend && next dev -p 9000",
     "build": "cd frontend && next build",
-    "start": "cd frontend && next start",
-    "lint": "cd frontend && next lint",
-    "heroku-postbuild": "npm run build && npm start"
+    "start": "cd frontend && next start -p $PORT",
+    "lint": "cd frontend && next lint"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
