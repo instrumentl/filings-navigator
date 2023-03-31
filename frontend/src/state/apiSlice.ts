@@ -11,13 +11,19 @@ const backend = process.env.NODE_ENV === 'production' ?
   process.env.BACKEND_URL :
   'http://localhost:3000/api'
 
+async function logAndOutput (response: Response) {
+  const text = await response.text()
+  console.log(text)
+  return text
+}
+
 export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: backend
   }) as BaseQueryFn<string | FetchArgs, unknown, ServerErrorType, {}>,
   endpoints: build => ({
     getAwards: build.query({
-      query: params => `/awards${params}`
+      query: params => ({url: `/awards${params}`, responseHandler: (response) => logAndOutput(response)})
     }),
     getAwardById: build.query({
       query: awardId => `/awards/${awardId}`
