@@ -1,2 +1,2 @@
 web: npm run start
-server: rails s
+server: rails s -p 3000
