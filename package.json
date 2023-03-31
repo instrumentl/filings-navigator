@@ -3,12 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "cacheDirectories": [".next/cache"],
+  "engines": {
+    "node": "18.0.0",
+    "npm": "8.6.0"
+  },
   "scripts": {
     "dev": "cd frontend && next dev -p 9000",
     "build": "cd frontend && next build",
     "start": "cd frontend && next start",
     "lint": "cd frontend && next lint",
-    "postinstall": "npm start"
+    "postinstall": "npm build && npm start"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
