@@ -45,6 +45,7 @@ gem "bootsnap", require: false
 gem 'rack-cors', :require => 'rack/cors'
 
 gem "will_paginate"
+gem 'rexml'
 
 # Use Sass to process CSS
 # gem "sassc-rails"

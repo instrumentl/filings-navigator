@@ -249,6 +249,7 @@ DEPENDENCIES
   rack-cors
   rails (~> 7.0.4, >= 7.0.4.2)
   rails-erd
+  rexml
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.6)
