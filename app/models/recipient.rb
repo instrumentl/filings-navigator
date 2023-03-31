@@ -2,13 +2,15 @@
 #
 # Table name: recipients
 #
-#  id      :integer          not null, primary key
-#  city    :text             not null
-#  ein     :integer          not null
-#  line_1  :text             not null
-#  name    :text             not null
-#  state   :text             not null
-#  zipcode :integer          not null
+#  id         :integer          not null, primary key
+#  city       :text             not null
+#  ein        :integer          not null
+#  line_1     :text             not null
+#  name       :text             not null
+#  state      :text             not null
+#  zipcode    :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 require 'rexml/document'
 

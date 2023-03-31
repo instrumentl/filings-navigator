@@ -7,10 +7,12 @@
 #  filer_ein                :integer          not null
 #  return_timestamp         :datetime         not null
 #  tax_period               :date             not null
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
 #
 # Indexes
 #
-#  index_filings_on_filer  (filer_ein)
+#  index_filings_on_filer_ein  (filer_ein)
 #
 
 class Filing < ApplicationRecord

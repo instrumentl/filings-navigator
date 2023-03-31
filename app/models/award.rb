@@ -7,14 +7,16 @@
 #  filer_ein     :integer          not null
 #  purpose       :text
 #  recipient_ein :integer          not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
 #  filing_id     :integer          not null
 #
 # Indexes
 #
-#  index_awards_on_filer                (filer_ein)
-#  index_awards_on_filing               (filing_id)
-#  index_awards_on_recipient            (recipient_ein)
-#  index_awards_on_recipient_and_filer  (recipient_ein,filer_ein)
+#  index_awards_on_filer_ein                    (filer_ein)
+#  index_awards_on_filing_id                    (filing_id)
+#  index_awards_on_recipient_ein                (recipient_ein)
+#  index_awards_on_recipient_ein_and_filer_ein  (recipient_ein,filer_ein)
 #
 
 class Award < ApplicationRecord

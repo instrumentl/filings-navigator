@@ -10,44 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
-  create_table "filings" do |t|
-    t.timestamp "return_timestamp", null: false
-    t.text "amended_return_indicator"
-    t.date "tax_period", null: false
-    t.integer "filer_ein", null: false
-  end
-
-  add_index "filings", ["filer_ein"], name: "index_filings_on_filer"
-  
-  create_table "recipients" do |t|
-    t.integer "ein", null: false
-    t.text "name", null: false
-    t.text "line_1", null: false
-    t.text "city", null: false
-    t.text "state", null: false
-    t.integer "zipcode", null: false
-  end
-  
-  create_table "awards" do |t|
+ActiveRecord::Schema[7.0].define(version: 2023_03_31_115302) do
+  create_table "awards", force: :cascade do |t|
     t.integer "filing_id", null: false
     t.integer "filer_ein", null: false
     t.integer "award_amount", null: false
     t.integer "recipient_ein", null: false
     t.text "purpose"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["filer_ein"], name: "index_awards_on_filer_ein"
+    t.index ["filing_id"], name: "index_awards_on_filing_id"
+    t.index ["recipient_ein", "filer_ein"], name: "index_awards_on_recipient_ein_and_filer_ein"
+    t.index ["recipient_ein"], name: "index_awards_on_recipient_ein"
   end
 
-  add_index "awards", ["recipient_ein", "filer_ein"], name: "index_awards_on_recipient_and_filer"
-  add_index "awards", ["recipient_ein"], name: "index_awards_on_recipient"
-  add_index "awards", ["filer_ein"], name: "index_awards_on_filer"
-  add_index "awards", ["filing_id"], name: "index_awards_on_filing"
-
-  create_table "filers" do |t|
+  create_table "filers", force: :cascade do |t|
     t.integer "ein", null: false
     t.text "name", null: false
     t.text "line_1", null: false
     t.text "city", null: false
     t.text "state", null: false
     t.integer "zipcode", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
+
+  create_table "filings", force: :cascade do |t|
+    t.datetime "return_timestamp", precision: nil, null: false
+    t.text "amended_return_indicator"
+    t.date "tax_period", null: false
+    t.integer "filer_ein", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["filer_ein"], name: "index_filings_on_filer_ein"
+  end
+
+  create_table "recipients", force: :cascade do |t|
+    t.integer "ein", null: false
+    t.text "name", null: false
+    t.text "line_1", null: false
+    t.text "city", null: false
+    t.text "state", null: false
+    t.integer "zipcode", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end
