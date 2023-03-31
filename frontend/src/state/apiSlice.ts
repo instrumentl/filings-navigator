@@ -8,8 +8,8 @@ export interface ServerErrorType {
 }
 
 const backend = process.env.NODE_ENV === 'production' ? 
-  process.env.BACKEND_URL :
-  'http://localhost:3000/api'
+  'https://filings-navigator-ruby.herokuapp.com/api':
+  'https://filings-navigator-ruby.herokuapp.com/api'
 
 export const api = createApi({
   baseQuery: fetchBaseQuery({
