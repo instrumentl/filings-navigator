@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  filer_id: 1
+  amended_return: false
+  return_timestamp: 2023-05-16 12:06:19
+
+two:
+  filer_id: 1
+  amended_return: false
+  return_timestamp: 2023-05-16 12:06:19

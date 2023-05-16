@@ -1,5 +1,21 @@
 # README
 
+## Cello - Stack
+- Ruby on Rails
+- ReactJS Frontend
+- Tailwind CSS
+
+## Cello - Setup & Run
+- `bundle install`
+- `rails db:migrate`
+- `./bin/dev`
+
+## Cello - Cut Corners
+- Address/City/State in a real app would probably be broken out into seperate models
+- Depending on complexity Tax periods might be broken out into models, using string of the year for simplicity
+- Might use seperate service for creating an organization
+
+
 ## Installation
 
 - `bundle install`
@@ -11,7 +27,7 @@
 
 ## Running the server
 
-- `rails s`
+- ~~`rails s`~~
 
 ### Total time: ~12 hours
 

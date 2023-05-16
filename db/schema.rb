@@ -10,5 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_16_190619) do
+  create_table "awards", force: :cascade do |t|
+    t.string "purpose"
+    t.decimal "amount"
+    t.string "tax_period"
+    t.integer "filing_id"
+    t.integer "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "filings", force: :cascade do |t|
+    t.integer "filer_id"
+    t.boolean "amended_return"
+    t.datetime "return_timestamp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "ein"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end
