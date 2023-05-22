@@ -155,6 +155,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.14.2-x86_64-linux)
       racc (~> 1.4)
+    pg (1.5.3)
     public_suffix (5.0.1)
     puma (6.2.0)
       nio4r (~> 2.0)
@@ -205,9 +206,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.6.2-arm64-darwin)
-    sqlite3 (1.6.2-x86_64-darwin)
-    sqlite3 (1.6.2-x86_64-linux)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     tailwindcss-rails (2.0.29-arm64-darwin)
@@ -256,11 +254,11 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   jsonapi-rails
+  pg
   puma (~> 6.2)
   rails (~> 7.0.4, >= 7.0.4.2)
   selenium-webdriver
   sprockets-rails
-  sqlite3 (~> 1.6)
   stimulus-rails
   tailwindcss-rails (~> 2.0)
   turbo-rails
