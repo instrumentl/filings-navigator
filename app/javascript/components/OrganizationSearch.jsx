@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import DataExplorer from './DataExplorer.jsx'
 
 export default function OrganizationSearch() {
-	const [filers, setFilers] = useState([{"name":"test"}]);
+	const [filers, setFilers] = useState([{}]);
 	const [selectedFiler, setSelectedFiler] = useState();
 	const [filerData, setFilerData] = useState([]);
 
