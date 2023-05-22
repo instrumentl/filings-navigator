@@ -31,6 +31,9 @@ gem "jbuilder"
 # HTTParty for simple http requests for getting data
 gem "httparty"
 
+gem "active_model_serializers"
+gem 'jsonapi-rails'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

@@ -7,10 +7,15 @@ function App() {
   return (
   	<>
   		<div className="flex flex-row">
-	  		<h1 className="text-3xl font-bold underline">Filings Navigator</h1>
+  			<div className="basis-1/4">
+  			</div>
+  			<div className="basis-1/2">
+		  		<h1 className="text-4xl font-light mt-10">Filings Navigator</h1>
+		  	</div>
+		  	<div className="basis-1/4">
+  			</div>
   		</div>
   		<OrganizationSearch />
-  		<DataExplorer />
   	</>
   );
 }
