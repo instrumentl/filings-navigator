@@ -16,7 +16,7 @@
 - Depending on complexity Tax periods might be broken out into models, using string of the year for simplicity
 - Might use seperate service for creating an organization
 - In a larger environment with more data intakes we would probably be batching processes and divying out into background worker tasks, such as with Sidekiq
-- I noticed with some data the state was missing. In real example we could be doing lookups on this using the zip.
+- Ideally we could be validating state data
 - Used a single api controller rather than breaking up across resources
 - Only using strong parameters for awards since that's the only added filter (extra params)
 - Added only very basic tests for validation
@@ -46,11 +46,8 @@ service.call`
 - [x] API: Serialized awards by filing: `/api/filings/1/awards`
 - [x] API: Serialized recipients: `http://localhost:3000/api/recipients`
 - [X] Consider additional request parameters: Awards api call includes a filter to limit results by the minimum amount value: `/api/filings/1/awards?min_value=20000`
-
 - [x] Frontend: Explore historical filings of a filer and open Awards data linked to a filing
 - [x] Deploy to Heroku: https://bretmatic-filings-navigator.herokuapp.com/
-
-
 
 
 ## How to deliver your code

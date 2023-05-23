@@ -23,7 +23,7 @@ class FilingsIntakeService
 							name: data["ReturnHeader"]["Filer"]["BusinessName"]["BusinessNameLine1Txt"],
 							address: data["ReturnHeader"]["Filer"]["USAddress"]["AddressLine1Txt"],
 							city: data["ReturnHeader"]["Filer"]["USAddress"]["CityNm"],
-							state: data["ReturnHeader"]["Filer"]["USAddress"]["StateAbbreviationsCd"],
+							state: data["ReturnHeader"]["Filer"]["USAddress"]["StateAbbreviationCd"],
 							zip: data["ReturnHeader"]["Filer"]["USAddress"]["ZIPCd"],
 						)
 				end
@@ -50,7 +50,7 @@ class FilingsIntakeService
 									name: item["RecipientBusinessName"]["BusinessNameLine1Txt"],
 									address: item["USAddress"]["AddressLine1Txt"],
 									city: item["USAddress"]["CityNm"],
-									state: item["USAddress"]["StateAbbreviationsCd"],
+									state: item["USAddress"]["StateAbbreviationCd"],
 									zip: item["USAddress"]["ZIPCd"],
 								)
 							end
