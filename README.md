@@ -16,7 +16,11 @@
 - Depending on complexity Tax periods might be broken out into models, using string of the year for simplicity
 - Might use seperate service for creating an organization
 - In a larger environment with more data intakes we would probably be batching processes and divying out into background worker tasks, such as with Sidekiq
-- I noticed with some data the state was missing.. in real example we could be doing lookups on this using the zip.
+- I noticed with some data the state was missing. In real example we could be doing lookups on this using the zip.
+- Used a single api controller rather than breaking up across resources
+- Only using strong parameters for awards since that's the only added filter (extra params)
+- Added only very basic tests for validation
+- Ideally we should add test around the `filing_intake_service.rb` as it is brittle in its current state
 
 ## Notes
 - Data intake is being done via `seeds.rb` but could also be run from the console using
@@ -37,105 +41,17 @@ service.call`
 ## Requirements
 - [x] Parse and store ein, name, address, city, state, zip code info for both filers and recipients
 - [x] Parse and store award attributes, such as purpose, cash amount, and tax period
-- [x] API: Serialized filers
-- [x] API: Serialized filings by filer
-- [x] API: Serialized awards by filing
-- [x] API: Serialized recipients
-- [ ] Consider additional request parameters by endpoint (e.g. filter recipients by filing, filter recipients by state, filter recipients by cash amount, pagination, etc).
+- [x] API: Serialized filers: `http://localhost:3000/api/filers`
+- [x] API: Serialized filings by filer: `http://localhost:3000/api/filers/1/filings`
+- [x] API: Serialized awards by filing: `/api/filings/1/awards`
+- [x] API: Serialized recipients: `http://localhost:3000/api/recipients`
+- [X] Consider additional request parameters: Awards api call includes a filter to limit results by the minimum amount value: `/api/filings/1/awards?min_value=20000`
+
 - [x] Frontend: Explore historical filings of a filer and open Awards data linked to a filing
 - [x] Deploy to Heroku: https://bretmatic-filings-navigator.herokuapp.com/
 
 
 
-
-
-## Installation
-
-- `bundle install`
-
-## Prepare DB
-
-- `rake db:migrate`
-- **_ TODO _**
-
-## Running the server
-
-- ~~`rails s`~~
-
-### Total time: ~12 hours
-
-## Background Information
-
-Every year, US Nonprofit organizations submit tax returns to the IRS. The tax returns are converted into XML and made available by the IRS. These tax returns contain information about the nonprofit’s giving and/or receiving for the tax period. For this coding project, we will focus on the nonprofit’s attributes and the awards that they gave or received in a particular tax year.
-
-These Organizations may file their taxes multiple times in a year (also known as filing amended returns). Only one return is considered valid, however. The valid return is the one with the most recent `ReturnTimestamp` (and/or the one with the `Amended Return Indicator`).
-
-## Key Definitions
-
-- Filers are nonprofit organizations that submit tax return data to the IRS.
-- Awards are grants given by the filer to nonprofit organizations in a given year.
-- Recipients are nonprofit organizations who have received awards given by a filer.
-- Filings are the individual tax returns submitted by filers to the IRS for a given tax period. A filing contains awards given by the filer to recipients.
-
-Example: "The filer’s 2015 filing declares that they gave 18 awards to 12 different recipients totalling $118k in giving"
-
-## Backend Requirements
-
-**Build a Rails or Sinatra web application that parses the IRS XML and stores the data into a database**
-
-- Parse and store ein, name, address, city, state, zip code info for both filers and recipients
-- Parse and store award attributes, such as purpose, cash amount, and tax period
-- Generate an API to access the data. This API should support
-  - Serialized filers
-  - Serialized filings by filer
-  - Serialized awards by filing
-  - Serialized recipients
-- Consider additional request parameters by endpoint (e.g. filter recipients by filing, filter recipients by state, filter recipients by cash amount, pagination, etc).
-- Be sure to read the [Frontend Requirements](#frontend-requirements) when building and extending the API!
-- Bonus points for deploying to Heroku
-
-## Filing Urls
-
-- https://filing-service.s3-us-west-2.amazonaws.com/990-xmls/201612429349300846_public.xml
-- https://filing-service.s3-us-west-2.amazonaws.com/990-xmls/201831309349303578_public.xml
-- https://filing-service.s3-us-west-2.amazonaws.com/990-xmls/201641949349301259_public.xml
-- https://filing-service.s3-us-west-2.amazonaws.com/990-xmls/201921719349301032_public.xml
-- https://filing-service.s3-us-west-2.amazonaws.com/990-xmls/202141799349300234_public.xml
-- https://filing-service.s3-us-west-2.amazonaws.com/990-xmls/201823309349300127_public.xml
-- https://filing-service.s3-us-west-2.amazonaws.com/990-xmls/202122439349100302_public.xml
-- https://filing-service.s3-us-west-2.amazonaws.com/990-xmls/201831359349101003_public.xml
-
-## Paths and Keys in XMLs for Related Data
-
-- Filing Path: `Return/ReturnHeader`
-  - Return Timestamp: `{ReturnTs}`
-  - Tax Period: `{TaxPeriodEndDt,TaxPeriodEndDate}`
-- Filer Path: `Return/ReturnHeader/Filer`
-  - EIN: `EIN`
-  - Name: `{Name,BusinessName}/{BusinessNameLine1,BusinessNameLine1Txt}`
-  - Address: `{USAddress,AddressUS}`
-  - Line 1: `{AddressLine1,AddressLine1Txt}`
-  - City: `{City,CityNm}`
-  - State: `{State,StateAbbreviationCd}`
-  - Zip: `{ZIPCode,ZIPCd}`
-- Award List Path: `Return/ReturnData/IRS990ScheduleI/RecipientTable`
-  - Amended Return Indicator: `{AmendedReturnInd}`
-  - EIN: `{EINOfRecipient,RecipientEIN}`
-  - Recipient Name: `{RecipientNameBusiness,RecipientBusinessName}/{BusinessNameLine1,BusinessNameLine1Txt}`
-  - Recipient Address: `{USAddress,AddressUS}`
-    - Line 1: `{AddressLine1,AddressLine1Txt}`
-    - City: `{City,CityNm}`
-    - State: `{State,StateAbbreviationCd}`
-    - Zip: `{ZIPCode,ZIPCd}`
-  - Award Amount: `{AmountOfCashGrant,CashGrantAmt}`
-
-\* Paths may vary by schema version
-
-## Frontend Requirements
-
-Go ahead and show off! Build something fun that utilizes the API. Consider building a UI that enables a customer to explore the historical giving of a filer. What information is relevant? How should someone navigate the data? Obviously, you don’t have infinite time, so feel free to stub out functionality or leave comments for things you didn’t get around to finishing. We understand!
-
-The only requirements for the frontend are that you leverage your new API in Javascript (please, no Backbone.js).
 
 ## How to deliver your code
 

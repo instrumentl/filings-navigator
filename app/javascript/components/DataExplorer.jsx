@@ -6,9 +6,7 @@ export default function DataExplorer(props) {
 
 	useEffect(() => {
 		if(props["data"][0] === undefined) {
-			//console.log(props["data"][0]["amended_return"]);
 		}
-		//console.log(props["data"][0]["amended_return"]);
 		setDataRows(props["data"]);
 	}, [props["data"]]);
 

@@ -35,6 +35,10 @@ gem "httparty"
 gem "active_model_serializers"
 gem 'jsonapi-rails'
 
+group :development, :test do
+  gem 'rspec-rails'
+end
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

@@ -16,13 +16,20 @@ class ApiController < ApplicationController
   end
 
   def awards
-    awards = Award.where('filing_id = ?', params[:id])
+    min_value = awards_params[:min_value] ? awards_params[:min_value] : 0
+    awards = Award.where('filing_id = ? and amount > ?', awards_params[:id], min_value)
     render json: { awards: ActiveModelSerializers::SerializableResource.new(awards, each_serializer: ::AwardsSerializer) }
   end
 
   def recipients
     recipients = Award.preload(:recipient).all.map(&:recipient).uniq
     render json: { recipients: ActiveModelSerializers::SerializableResource.new(recipients, each_serializer: ::RecipientsSerializer) }
+  end
+
+  private
+
+  def awards_params
+    params.permit :id, :min_value
   end
 
 end
