@@ -17,12 +17,12 @@ class ApiController < ApplicationController
 
   def awards
     awards = Award.where('filing_id = ?', params[:id])
-    render json: { awards: awards }
+    render json: { awards: ActiveModelSerializers::SerializableResource.new(awards, each_serializer: ::AwardsSerializer) }
   end
 
   def recipients
     recipients = Award.preload(:recipient).all.map(&:recipient).uniq
-    render json: { recipients: recipients }
+    render json: { recipients: ActiveModelSerializers::SerializableResource.new(recipients, each_serializer: ::RecipientsSerializer) }
   end
 
 end

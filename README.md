@@ -1,19 +1,52 @@
 # README
 
-## Cello - Stack
+## Stack
 - Ruby on Rails
 - ReactJS Frontend
 - Tailwind CSS
 
-## Cello - Setup & Run
+## Setup & Run
 - `bundle install`
 - `rails db:migrate`
+- `rails db:seed`
 - `./bin/dev`
 
-## Cello - Cut Corners
+## Cut Corners
 - Address/City/State in a real app would probably be broken out into seperate models
 - Depending on complexity Tax periods might be broken out into models, using string of the year for simplicity
 - Might use seperate service for creating an organization
+- In a larger environment with more data intakes we would probably be batching processes and divying out into background worker tasks, such as with Sidekiq
+- I noticed with some data the state was missing.. in real example we could be doing lookups on this using the zip.
+
+## Notes
+- Data intake is being done via `seeds.rb` but could also be run from the console using
+`file_load = [
+  "990-xmls/201612429349300846_public.xml",
+  "990-xmls/201831309349303578_public.xml",
+  "990-xmls/201641949349301259_public.xml",
+  "990-xmls/201921719349301032_public.xml",
+  "990-xmls/202141799349300234_public.xml",
+  "990-xmls/201823309349300127_public.xml",
+  "990-xmls/202122439349100302_public.xml",
+  "990-xmls/201831359349101003_public.xml"
+]`
+
+`service = FilingsIntakeService.new(file_load)
+service.call`
+
+## Requirements
+- [x] Parse and store ein, name, address, city, state, zip code info for both filers and recipients
+- [x] Parse and store award attributes, such as purpose, cash amount, and tax period
+- [x] API: Serialized filers
+- [x] API: Serialized filings by filer
+- [x] API: Serialized awards by filing
+- [x] API: Serialized recipients
+- [ ] Consider additional request parameters by endpoint (e.g. filter recipients by filing, filter recipients by state, filter recipients by cash amount, pagination, etc).
+- [x] Frontend: Explore historical filings of a filer and open Awards data linked to a filing
+- [x] Deploy to Heroku: https://bretmatic-filings-navigator.herokuapp.com/
+
+
+
 
 
 ## Installation
