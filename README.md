@@ -19,7 +19,7 @@
 
 Every year, US Nonprofit organizations submit tax returns to the IRS. The tax returns are converted into XML and made available by the IRS. These tax returns contain information about the nonprofit’s giving and/or receiving for the tax period. For this coding project, we will focus on the nonprofit’s attributes and the awards that they gave or received in a particular tax year.
 
-These Organizations may file their taxes multiple times in a year (also known as filing amended returns). Only one return is considered valid, however. The valid return is the one with the most recent `ReturnTimestamp` (and/or the one with the `Amended Return Indicator`).
+These Organizations may file their taxes multiple times in a year (also known as filing amended returns). Only one return is considered valid, however. The valid return is the one marked anywhere with an amended return indicator (`AmendedReturnInd`), or if no missing, the one with the most recent return time (`ReturnTimestamp`).
 
 ## Key Definitions
 
@@ -65,12 +65,11 @@ Example: "The filer’s 2015 filing declares that they gave 18 awards to 12 diff
   - EIN: `EIN`
   - Name: `{Name,BusinessName}/{BusinessNameLine1,BusinessNameLine1Txt}`
   - Address: `{USAddress,AddressUS}`
-  - Line 1: `{AddressLine1,AddressLine1Txt}`
-  - City: `{City,CityNm}`
-  - State: `{State,StateAbbreviationCd}`
-  - Zip: `{ZIPCode,ZIPCd}`
+    - Line 1: `{AddressLine1,AddressLine1Txt}`
+    - City: `{City,CityNm}`
+    - State: `{State,StateAbbreviationCd}`
+    - Zip: `{ZIPCode,ZIPCd}`
 - Award List Path: `Return/ReturnData/IRS990ScheduleI/RecipientTable`
-  - Amended Return Indicator: `{AmendedReturnInd}`
   - EIN: `{EINOfRecipient,RecipientEIN}`
   - Recipient Name: `{RecipientNameBusiness,RecipientBusinessName}/{BusinessNameLine1,BusinessNameLine1Txt}`
   - Recipient Address: `{USAddress,AddressUS}`
@@ -79,6 +78,7 @@ Example: "The filer’s 2015 filing declares that they gave 18 awards to 12 diff
     - State: `{State,StateAbbreviationCd}`
     - Zip: `{ZIPCode,ZIPCd}`
   - Award Amount: `{AmountOfCashGrant,CashGrantAmt}`
+- Amended Return Indicator Path: An Amended Return Indicator can appear in multiple places within the document (e.g. `Return/ReturnData/IRS990ScheduleI/RecipientTable/AmendedReturnInd`, `Return/ReturnData/IRS990/AmendedReturnInd`).
 
 \* Paths may vary by schema version
 
